@@ -35,14 +35,14 @@ const create = (req, res, next) => {
         }))
     .catch(next);
 };
-//
-// const update = (req, res, next) => {
-//   delete req.body._owner;  // disallow owner reassignment.
-//   req.blog.update(req.body.blog)
-//     .then(() => res.sendStatus(204))
-//     .catch(next);
-// };
-//
+
+const update = (req, res, next) => {
+  delete req.body._owner;  // disallow owner reassignment.
+  req.blog.update(req.body.blog)
+    .then(() => res.sendStatus(204))
+    .catch(next);
+};
+
 // const destroy = (req, res, next) => {
 //   req.blog.remove()
 //     .then(() => res.sendStatus(204))
@@ -53,7 +53,7 @@ module.exports = controller({
   index,
   show,
   create,
-  // update,
+  update,
   // destroy,
 }, { before: [
   { method: setUser, only: ['index', 'show'] },
