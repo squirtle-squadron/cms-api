@@ -17,11 +17,11 @@ const index = (req, res, next) => {
     .catch(next);
 };
 
-// const show = (req, res) => {
-//   res.json({
-//     blog: req.blog.toJSON({ virtuals: true, user: req.user }),
-//   });
-// };
+const show = (req, res) => {
+  res.json({
+    blog: req.blog.toJSON({ virtuals: true, user: req.user }),
+  });
+};
 
 // const create = (req, res, next) => {
 //   let blog = Object.assign(req.body.blog, {
@@ -51,7 +51,7 @@ const index = (req, res, next) => {
 
 module.exports = controller({
   index,
-  // show,
+  show,
   // create,
   // update,
   // destroy,
