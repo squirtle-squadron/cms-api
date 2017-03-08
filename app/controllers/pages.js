@@ -2,16 +2,16 @@
 
 const controller = require('lib/wiring/controller');
 const models = require('app/models');
-const Example = models.example;
+const Page = models.page;
 
 const authenticate = require('./concerns/authenticate');
 const setUser = require('./concerns/set-current-user');
 const setModel = require('./concerns/set-mongoose-model');
 
 const index = (req, res, next) => {
-  Example.find()
-    .then(examples => res.json({
-      examples: examples.map((e) =>
+  Page.find()
+    .then(pages => res.json({
+      pages: pages.map((e) =>
         e.toJSON({ virtuals: true, user: req.user })),
     }))
     .catch(next);
@@ -19,32 +19,32 @@ const index = (req, res, next) => {
 
 const show = (req, res) => {
   res.json({
-    example: req.example.toJSON({ virtuals: true, user: req.user }),
+    page: req.page.toJSON({ virtuals: true, user: req.user }),
   });
 };
 
 const create = (req, res, next) => {
-  let example = Object.assign(req.body.example, {
+  let page = Object.assign(req.body.page, {
     _owner: req.user._id,
   });
-  Example.create(example)
-    .then(example =>
+  Page.create(page)
+    .then(page =>
       res.status(201)
         .json({
-          example: example.toJSON({ virtuals: true, user: req.user }),
+          page: page.toJSON({ virtuals: true, user: req.user }),
         }))
     .catch(next);
 };
 
 const update = (req, res, next) => {
   delete req.body._owner;  // disallow owner reassignment.
-  req.example.update(req.body.example)
+  req.page.update(req.body.page)
     .then(() => res.sendStatus(204))
     .catch(next);
 };
 
 const destroy = (req, res, next) => {
-  req.example.remove()
+  req.page.remove()
     .then(() => res.sendStatus(204))
     .catch(next);
 };
@@ -58,6 +58,6 @@ module.exports = controller({
 }, { before: [
   { method: setUser, only: ['index', 'show'] },
   { method: authenticate, except: ['index', 'show'] },
-  { method: setModel(Example), only: ['show'] },
-  { method: setModel(Example, { forUser: true }), only: ['update', 'destroy'] },
+  { method: setModel(Page), only: ['show'] },
+  { method: setModel(Page, { forUser: true }), only: ['update', 'destroy'] },
 ], });
