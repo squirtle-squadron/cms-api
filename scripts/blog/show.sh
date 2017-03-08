@@ -4,7 +4,7 @@ URL_PATH="/blogs"
 
 curl "${API}${URL_PATH}/${ID}" \
  --include \
- --request GET #\
- # --header "Authorization: Token token=$TOKEN"
+ --request GET \
+ --header "Authorization: Token token=$TOKEN"
 
 echo

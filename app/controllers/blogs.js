@@ -23,18 +23,18 @@ const show = (req, res) => {
   });
 };
 
-// const create = (req, res, next) => {
-//   let blog = Object.assign(req.body.blog, {
-//     _owner: req.user._id,
-//   });
-//   Blog.create(blog)
-//     .then(blog =>
-//       res.status(201)
-//         .json({
-//           blog: blog.toJSON({ virtuals: true, user: req.user }),
-//         }))
-//     .catch(next);
-// };
+const create = (req, res, next) => {
+  let blog = Object.assign(req.body.blog, {
+    _owner: req.user._id,
+  });
+  Blog.create(blog)
+    .then(blog =>
+      res.status(201)
+        .json({
+          blog: blog.toJSON({ virtuals: true, user: req.user }),
+        }))
+    .catch(next);
+};
 //
 // const update = (req, res, next) => {
 //   delete req.body._owner;  // disallow owner reassignment.
@@ -52,7 +52,7 @@ const show = (req, res) => {
 module.exports = controller({
   index,
   show,
-  // create,
+  create,
   // update,
   // destroy,
 }, { before: [
