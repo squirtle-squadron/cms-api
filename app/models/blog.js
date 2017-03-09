@@ -9,7 +9,7 @@ const blogSchema = new mongoose.Schema({
   },
   content:{
     type: String,
-    require: true
+    required: true
   },
   _owner: {
     type: mongoose.Schema.Types.ObjectId,
