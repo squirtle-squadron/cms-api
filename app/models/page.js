@@ -2,8 +2,12 @@
 
 const mongoose = require('mongoose');
 
-const exampleSchema = new mongoose.Schema({
-  text: {
+const pageSchema = new mongoose.Schema({
+  header: {
+    type: String,
+    required: true,
+  },
+  body: {
     type: String,
     required: true,
   },
@@ -24,10 +28,10 @@ const exampleSchema = new mongoose.Schema({
   },
 });
 
-exampleSchema.virtual('length').get(function length() {
-  return this.text.length;
-});
+// pageSchema.virtual('length').get(function length() {
+//   return this.text.length;
+// });
 
-const Example = mongoose.model('Example', exampleSchema);
+const Page = mongoose.model('Page', pageSchema);
 
-module.exports = Example;
+module.exports = Page;
