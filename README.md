@@ -75,7 +75,7 @@ Content-Type: application/json; charset=utf-8
   }
 }
 ```
-
+---
 #### POST /sign-in
 
 Request:
@@ -111,7 +111,7 @@ Content-Type: application/json; charset=utf-8
   }
 }
 ```
-
+---
 #### PATCH /change-password/:id
 
 Request:
@@ -137,7 +137,7 @@ Response:
 ```md
 HTTP/1.1 204 No Content
 ```
-
+---
 #### DELETE /sign-out/:id
 
 Request:
@@ -158,7 +158,7 @@ Response:
 ```md
 HTTP/1.1 204 No Content
 ```
-
+---
 ### Users
 
 | Verb | URI Pattern | Controller#Action |
@@ -166,7 +166,8 @@ HTTP/1.1 204 No Content
 | GET  | `/users`    | `users#index`     |
 | GET  | `/users/1`  | `users#show`      |
 
-#### GET /users
+---
+### GET /users
 
 Request:
 
@@ -201,8 +202,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
-
-#### GET /users/:id
+---
+### GET /users/:id
 
 Request:
 
@@ -227,7 +228,9 @@ Content-Type: application/json; charset=utf-8
   }
 }
 ```
-
+---
 ### User Actions
 
 All blogs action requests must include a valid HTTP header `Authorization: Token token=<token>` or they will be rejected with a status of 401 Unauthorized.
+
+---
