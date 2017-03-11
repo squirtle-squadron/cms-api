@@ -11,7 +11,8 @@ curl "${API}${URL_PATH}/${ID}" \
   --data '{
     "blog": {
       "title": "'"${TITLE}"'",
-      "content": "'"${CONTENT}"'"
+      "content": "'"${CONTENT}"'",
+      "author": "'"${AUTHOR}"'"
     }
   }'
 
