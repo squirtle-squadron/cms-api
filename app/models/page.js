@@ -11,6 +11,9 @@ const pageSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  footer: {
+    type: String,
+  },
   _owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
