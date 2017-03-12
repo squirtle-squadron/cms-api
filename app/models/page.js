@@ -6,13 +6,19 @@ const pageSchema = new mongoose.Schema({
   header: {
     type: String,
     required: true,
+    minlength: 1,
+    maxlength: 50
   },
   body: {
     type: String,
     required: true,
+    minlength: 1,
+    maxlength: 1005
   },
   footer: {
     type: String,
+    minlength: 1,
+    maxlength: 50
   },
   _owner: {
     type: mongoose.Schema.Types.ObjectId,
