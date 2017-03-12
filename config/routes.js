@@ -6,6 +6,7 @@ module.exports = require('lib/wiring/routes')
 
 // what to run for `GET /`
 .root('root#root')
+.get('/userblogs', 'blogs#indexSignedIn')
 
 // standards RESTful routes
 .resources('examples')
