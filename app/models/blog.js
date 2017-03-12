@@ -6,10 +6,20 @@ const blogSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+    minlength: 1,
+    maxlength: 50
   },
   content:{
     type: String,
-    required: true
+    required: true,
+    minlength: 1,
+    maxlength: 1005
+  },
+  author:{
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 50
   },
   _owner: {
     type: mongoose.Schema.Types.ObjectId,

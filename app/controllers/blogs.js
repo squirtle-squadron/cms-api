@@ -17,6 +17,14 @@ const index = (req, res, next) => {
     .catch(next);
 };
 
+const indexSignedIn = (req, res, next) => {
+  Blog.find({ _owner: req.user })
+    .then(blogs => res.json({
+      blogs: blogs.map((e) =>
+        e.toJSON({ virtuals: true, user: req.user })),
+    }))
+    .catch(next);
+};
 
 const show = (req, res) => {
   res.json({
@@ -53,6 +61,7 @@ const destroy = (req, res, next) => {
 
 module.exports = controller({
   index,
+  indexSignedIn,
   show,
   create,
   update,
